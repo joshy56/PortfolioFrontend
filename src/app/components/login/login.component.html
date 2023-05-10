@@ -1,1 +1,15 @@
-<p>login works!</p>
+<!--<h1 mat-dialog-title>Dialog with elements</h1>
+<div mat-dialog-content>
+  This dialog showcases the title, close, content and actions elements.
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div>-->
+<button
+  mat-icon-button
+  [color]="authService.logged() ? 'warn' : 'primary'"
+  [matTooltip]="authService.logged() ? 'Cerrar sesion' : 'Iniciar sesion'"
+  (click)="authService.logged() ? authService.logout() : showLoginDialog()"
+>
+  <mat-icon>{{ authService.logged() ? "logout" : "login" }}</mat-icon>
+</button>

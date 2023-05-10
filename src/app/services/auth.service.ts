@@ -9,7 +9,13 @@ export class AuthService {
 
   constructor() {}
 
-  login(username: string, password: string) {}
+  logged(): boolean {
+    return this.tokenService.getToken() !== null;
+  }
+
+  login(username: string, password: string) {
+    this.tokenService.storeToken(`user/${username}, password/${password}`);
+  }
 
   logout() {
     this.tokenService.clearToken();

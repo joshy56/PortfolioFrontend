@@ -1,0 +1,43 @@
+<!--<div>
+  <mat-toolbar color="accent">
+    <a mat-fab extended routerLink="" color="primary">
+      <mat-icon>home</mat-icon>
+      Home
+    </a>
+  </mat-toolbar>
+</div>
+<router-outlet></router-outlet>-->
+
+<!--<div fxLayout="column" fxLayoutAlign="center stretch">-->
+<!--<div fxLayout="row" fxLayoutAlign="center center">
+  <mat-toolbar color="accent">
+    <div fxFlexAlign="center center">
+      <img src="../assets/favicon.ico" alt="Logo" />
+    </div>
+    <div fxFlex="2 1 auto"></div>
+    <div>
+      <login></login>
+    </div>
+  </mat-toolbar>
+</div>
+<div>
+  <router-outlet></router-outlet>
+</div>-->
+<!--</div>-->
+
+<div fxLayout="column" fxLayoutAlign="space-evenly center">
+  <div fxFlexFill style="position: relative">
+    <mat-toolbar color="accent">
+      <div fxFlexAlign="center center">
+        <img src="../assets/favicon.ico" alt="Logo" />
+      </div>
+      <div fxFlex="1 1 auto"></div>
+      <div>
+        <login></login>
+      </div>
+    </mat-toolbar>
+  </div>
+  <div fxFlexFill>
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,8 +1,8 @@
 import { inject } from '@angular/core';
-import { CanActivateFn, Router } from '@angular/router';
+import { CanActivateFn, NavigationCancel, Router } from '@angular/router';
 import { TokenService } from '../services/token.service';
 
-export const functionalAuthGuard: CanActivateFn = () => {
+export const functionalAuthGuard: CanActivateFn = (route, snapshot) => {
   const tokenService = inject(TokenService);
   const router = inject(Router);
 
@@ -10,5 +10,6 @@ export const functionalAuthGuard: CanActivateFn = () => {
     router.navigate(['/login']);
     return false;
   }
+
   return true;
 };
