@@ -1,9 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   MatDialog,
   MatDialogActions,
   MatDialogModule,
+  MatDialogRef,
 } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,6 +15,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AuthService } from 'src/app/services/auth.service';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'login',
@@ -59,12 +66,23 @@ export class LoginComponent {
     MatFormFieldModule,
     MatDialogModule,
     MatIconModule,
+    ReactiveFormsModule,
   ],
 })
-export class LoginDialog {
+export class LoginDialog implements OnInit {
   public authService: AuthService = inject(AuthService);
-
+  private formBuilder: FormBuilder = inject(FormBuilder);
   hidePassword: boolean = true;
+  form!: FormGroup;
+
+  constructor(private dialogRef: MatDialogRef<LoginDialog>) {}
+
+  ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+    });
+  }
 
   public hidden(): boolean {
     return this.hidePassword;
@@ -72,5 +90,15 @@ export class LoginDialog {
 
   public switchHide(): void {
     this.hidePassword = !this.hidePassword;
+  }
+
+  public onSubmit(): void {
+    let username = this.form.get('username')?.value;
+    let password = this.form.get('password')?.value;
+    if (typeof username === 'string' && typeof password === 'string') {
+      this.authService
+        .login({ username, password })
+        .subscribe(() => this.dialogRef.close());
+    }
   }
 }

@@ -11,7 +11,7 @@ import { LoginComponent } from './components/login/login.component';
   selector: 'bootstrap',
   standalone: true,
   templateUrl: './bootstrap.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrls: ['./bootstrap.component.scss'],
   imports: [
     RouterModule,
     FlexLayoutModule,

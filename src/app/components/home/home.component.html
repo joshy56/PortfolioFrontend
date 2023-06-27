@@ -13,6 +13,56 @@
     />
     <!-- <img src="assets/shiba2--borrar.svg" alt="" fxFlexFill /> -->
   </div>
+  <div *ngFor="let section of sections">
+    <div>
+      <mat-toolbar color="accent">
+        <div>{{ section.title }}</div>
+        <div fxFlex="1 1 auto"></div>
+        <div>
+          <button
+            mat-icon-button
+            color="primary"
+            type="button"
+            matTooltip="Agregar"
+          >
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </mat-toolbar>
+    </div>
+    <div fxLayout="row wrap" fxLayoutAlign="center center">
+      <mat-card
+        fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutAlign="center center"
+        *ngFor="let card of section.cards"
+        id="{{ card.identifier }}"
+      >
+        <mat-card-header fxLayout="column" fxLayoutAlign="center center">
+          <mat-card-title>{{ card.headerTitle }}</mat-card-title>
+          <mat-card-subtitle>{{ card.headerSubtitle }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-card-title>{{ card.bodyTitle }}</mat-card-title>
+          <mat-card-subtitle>{{ card.bodySubtitle }}</mat-card-subtitle>
+        </mat-card-content>
+        <div
+          mat-card-actions
+          fxLayout="column"
+          fxLayout.xs="row"
+          fxLayoutAlign="center center"
+          [fxShow]="authService.logged()"
+        >
+          <button mat-icon-button color="primary" matTooltip="Editar">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="primary" matTooltip="Borrar" (click)="removeCard(card)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </mat-card>
+    </div>
+  </div>
 
   <mat-card fxLayout="row" fxLayout.xs="column">
     <mat-card-header fxLayout="column" fxLayoutAlign="center center">

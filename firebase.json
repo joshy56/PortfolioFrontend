@@ -1,0 +1,12 @@
+{
+  "hosting": {
+    "public": "public/argentina-programa-edicion4",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

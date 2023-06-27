@@ -10,6 +10,7 @@ import {
 } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { importProvidersFrom } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 bootstrapApplication(BootstrapComponent, {
   providers: [
@@ -33,6 +34,6 @@ bootstrapApplication(BootstrapComponent, {
           ).then((page) => page.PageNotFoundComponent),
       },
     ]),
-    importProvidersFrom([MatDialogModule]),
+    importProvidersFrom([MatDialogModule, HttpClientModule]),
   ],
 }).catch((ok) => console.error(ok));

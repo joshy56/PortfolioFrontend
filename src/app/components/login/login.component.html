@@ -7,7 +7,7 @@
 </div>-->
 <button
   mat-icon-button
-  [color]="authService.logged() ? 'warn' : 'primary'"
+  [color]="authService.logged() ? 'warn' : 'accent'"
   [matTooltip]="authService.logged() ? 'Cerrar sesion' : 'Iniciar sesion'"
   (click)="authService.logged() ? authService.logout() : showLoginDialog()"
 >
